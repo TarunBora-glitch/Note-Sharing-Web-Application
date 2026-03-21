@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Your Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile_setup.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h2>Complete Your Profile</h2>
+        <p>Fill in your details to get started</p>
+    </div>
+
+    <!-- PROFILE IMAGE -->
+    <div class="profile-pic">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" id="preview">        <input type="file" id="fileInput" accept="image/*">
+        <p id="uploadText">Add Photo</p>
+    </div>
+
+    <!-- FORM -->
+    <form method="POST" action="{{ url_for('profile_setup') }}">
+        <label>Username</label>
+        <input type="text" placeholder="Enter username" required>
+
+        <label>Select Gender</label>
+        <select required>
+            <option value="" disabled selected>Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <label>Short Bio</label>
+        <textarea placeholder="Tell us about yourself..."></textarea>
+
+        <label>College / Organization</label>
+        <input type="text" placeholder="Enter college name">
+
+        <label>Course / Branch</label>
+        <select required>
+            <option value="" disabled selected>Select Course</option>
+            <option>Computer Science and Engineering</option>
+        </select>
+
+        <label>Select Year</label>
+        <select required>
+            <option value="" disabled selected>Select Year</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+        </select>
+
+        <button type="submit">💾 Save & Continue</button>
+
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='profile_setup.js') }}"></script>
+
+</body>
+</html>

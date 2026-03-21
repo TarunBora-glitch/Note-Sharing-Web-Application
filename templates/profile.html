@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - NoteHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-book-open"></i>
+            <span>NoteHub</span>
+        </div>
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search notes..." class="search-input">
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home_page') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('browse_notes') }}" class="nav-link">Browse Notes</a>
+            <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+        </div>
+    </div>
+
+    <div class="container">
+    <div class="container">
+      <!-- PROFILE DISPLAY -->
+      <div class="profile-header">
+          <div class="profile-avatar-section">
+              <div class="avatar-container">
+                  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Photo" id="profileAvatar" class="avatar">
+                  <button class="edit-avatar-btn" onclick="document.getElementById('editAvatarInput').click()">
+                      <i class="fas fa-camera"></i>
+                  </button>
+                  <input type="file" id="editAvatarInput" accept="image/*" style="display:none;">
+              </div>
+          </div>
+          <div class="profile-info">
+              <div class="info-main">
+                  <h1 id="displayUsername">Set your username</h1>
+                  <span class="gender-badge" id="displayGender">Male</span>
+              </div>
+              <p class="bio" id="displayBio">Short bio about yourself...</p>
+              <div class="info-details">
+                  <div class="detail-item">
+                      <i class="fas fa-university"></i>
+                      <span id="displayCollege">Your College</span>
+                  </div>
+                  <div class="detail-item">
+                      <i class="fas fa-graduation-cap"></i>
+                      <span id="displayCourse">Course/Branch</span>
+                  </div>
+                  <div class="detail-item">
+                      <i class="fas fa-calendar-alt"></i>
+                      <span id="displayYear">Year 1</span>
+                  </div>
+              </div>
+              <button class="edit-profile-btn" onclick="toggleEdit()">
+                  <i class="fas fa-edit"></i> Edit Profile
+              </button>
+          </div>
+      </div>
+  
+      <!-- EDIT PROFILE OVERLAY -->
+    <div class="edit-overlay" id="editOverlay">
+        <div class="edit-form-container">
+            <div class="edit-header">
+                <h2>Edit Profile</h2>
+                <button class="close-edit" onclick="toggleEdit()">✕</button>
+            </div>
+            <form id="editForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="editUsername" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select id="editGender" >
+                        <option value="" disabled selected>Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Short Bio</label>
+                    <textarea id="editBio" placeholder="Write something about yourself..." rows="1"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Year</label>
+                    <select id="editYear" >
+                        <option value="" disabled selected>Select Year</option>
+                        <option>1st Year</option>
+                        <option>2nd Year</option>
+                        <option>3rd Year</option>
+                        <option>4th Year</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="toggleEdit()">Cancel</button>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='profile.js') }}"></script>
+  </body>
+  </html> 

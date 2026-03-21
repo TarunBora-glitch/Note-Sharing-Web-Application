@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - NoteHub</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h1>NoteHub</h1>
+        <p>Create, share, and access notes seamlessly.</p>
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="right">
+
+        <form class="signup-form" action="{{ url_for('profile_setup') }}" method="GET">
+            <h2>Create Account</h2>
+            <p class="sub">Join NoteHub and start sharing notes</p>
+
+            <!-- FULL NAME -->
+            <div class="input-box">
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Full Name" required>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="input-box">
+                <i class="fa fa-envelope"></i>
+                <input type="email" placeholder="Email Address" required>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-box">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+                <i class="fa fa-eye-slash toggle" onclick="togglePassword('password', this)"></i>
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+            <div class="input-box">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <i class="fa fa-eye-slash toggle" onclick="togglePassword('confirmPassword', this)"></i>
+            </div>
+
+            <!-- MATCH MESSAGE -->
+            <p id="matchMsg" class="match-msg"></p>
+
+            <!-- PASSWORD RULES -->
+            <div class="rules">
+                <p>Password must contain:</p>
+                <ul>
+                    <li id="length">🔴 At least 6 characters</li>
+                    <li id="case">🔴 Uppercase and lowercase letters</li>
+                    <li id="number">🔴 Numbers</li>
+                </ul>
+            </div>
+
+            <!-- BUTTON -->
+            <button type="submit" id="submitBtn">Create Account →</button>
+
+            <!-- LOGIN LINK -->
+            <p class="login-text">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Sign In</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='signup.js') }}"></script>
+</body>
+</html>

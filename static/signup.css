@@ -1,0 +1,135 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+  height: 100vh;
+  background: #f4f4f4;
+}
+
+/* MAIN WRAPPER */
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT PANEL */
+.left {
+  width: 50%;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.left h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.left p {
+  color: #ccc;
+}
+
+/* RIGHT PANEL */
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FORM */
+.signup-form {
+  width: 340px;
+}
+
+.signup-form h2 {
+  margin-bottom: 5px;
+}
+
+.sub {
+  color: gray;
+  margin-bottom: 20px;
+}
+
+/* INPUT BOX */
+.input-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.input-box i {
+  margin-right: 10px;
+  color: gray;
+}
+
+.input-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* TOGGLE ICON */
+.toggle {
+  cursor: pointer;
+}
+
+/* MATCH MESSAGE */
+.match-msg {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* PASSWORD RULES */
+.rules {
+  font-size: 13px;
+  color: gray;
+  margin-bottom: 15px;
+}
+
+.rules ul {
+  margin-left: 15px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+/* LOGIN TEXT */
+.login-text {
+  margin-top: 15px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.login-text a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}

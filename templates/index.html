@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NoteHub</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- ICONS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">
+        <i class="fa-solid fa-book-open"></i>
+        <span>NoteHub</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+        <a href="{{ url_for('signup') }}" class="signup-btn">Signup</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>All Your Notes, One Smart Platform</h1>
+    <p>
+        Upload, organize, and access study notes anytime.
+        Built for students to collaborate and learn faster.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="{{ url_for('signup') }}" class="btn primary">Get Started</a>
+        <a href="{{ url_for('login') }}" class="btn secondary">Login</a>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <h2>Why Choose NoteHub?</h2>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>📤 Upload Notes</h3>
+            <p>Easily upload and share your study materials.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📥 Download Notes</h3>
+            <p>Access notes anytime from anywhere.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>📚 Organized Content</h3>
+            <p>Notes sorted by subjects and categories.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🔒 Secure Access</h3>
+            <p>Your data is safe and protected.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Start Sharing Notes Today 🚀</h2>
+    <p>Join students using NoteHub.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 NoteHub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

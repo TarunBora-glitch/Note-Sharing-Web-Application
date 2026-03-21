@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Notes - NoteHub</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='upload_notes.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+  <div class="navbar">
+      <div class="logo">
+          <i class="fa-solid fa-book-open"></i>
+          <span>NoteHub</span>
+      </div>
+
+      <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" placeholder="Search notes..." class="search-input">
+      </div>
+
+      <div class="nav-links">
+          <a href="{{ url_for('home_page') }}" class="nav-link active">Home</a>
+          <a href="{{ url_for('browse_notes') }}" class="nav-link">Browse Notes</a>
+          <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+      </div>
+      
+  </div>
+  <div class="container">
+
+    <div class="header">
+        <h1>Upload Notes</h1>
+        <p class="subtitle">Share your notes with others</p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="upload-card">
+    <form method="POST" enctype="multipart/form-data">
+
+        <!-- STEP 1 -->
+        <div class="upload-step active" id="upload-year-step">
+            <label>Select Year</label>
+            <div class="year-buttons">
+                <button type="button" class="year-btn">Year 1</button>
+                <button type="button" class="year-btn">Year 2</button>
+                <button type="button" class="year-btn">Year 3</button>
+                <button type="button" class="year-btn">Year 4</button>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="upload-step" id="upload-semester-step">
+            <div class="step-header">
+                <button type="button" class="back-btn" onclick="goBack('upload-year-step')">⬅ Back</button>
+                <h2 id="selected-year-title"></h2>
+            </div>
+
+            <label>Select Semester</label>
+            <div class="semester-buttons">
+                <button type="button" class="semester-btn">Semester 1</button>
+                <button type="button" class="semester-btn">Semester 2</button>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="upload-step" id="upload-subject-step">
+            <div class="step-header">
+                <button type="button" class="back-btn" onclick="goBack('upload-semester-step')">⬅ Back</button>
+                <h2 id="selected-semester-title"></h2>
+            </div>
+
+            <label>Select Subject</label>
+            <div class="subject-grid">
+                <div class="subject-card"><h3>CS101</h3></div>
+                <div class="subject-card"><h3>Math101</h3></div>
+            </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="upload-step" id="upload-files-step">
+            <div class="step-header">
+                <button type="button" class="back-btn" onclick="goBack('upload-subject-step')">⬅ Back</button>
+                <h2 id="selected-subject-title"></h2>
+            </div>
+
+            <input type="hidden" name="year" id="yearInput">
+            <input type="hidden" name="semester" id="semesterInput">
+            <input type="hidden" name="subject" id="subjectInput">
+
+            <div class="upload-box" id="drag-area">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <p>Click or Drag Files to Upload</p>
+                <input type="file" name="files" id="fileInput" multiple>
+            </div>
+
+            <div id="fileList"></div>
+
+            <button type="submit">Upload Notes</button>
+        </div>
+
+    </form>
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='upload_notes.js') }}"></script>
+
+</body>
+</html>

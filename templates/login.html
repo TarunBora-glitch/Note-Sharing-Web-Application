@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - NoteHub</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h1>Notehub</h1>
+        <p>Organize, share, and access notes anytime, anywhere.</p>
+    </div>
+
+    <!-- RIGHT SIDE LOGIN FORM -->
+    <div class="right">
+        <form method="POST" action="{{ url_for('login') }}">
+
+            <h2>Welcome Back 👋</h2>
+            <p class="sub">Login to continue</p>
+
+            <!-- EMAIL -->
+            <div class="input-box">
+                <i class="fa fa-envelope"></i>
+                <input type="email" placeholder="Email Address" required>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-box">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+                <i class="fa fa-eye-slash toggle" onclick="togglePassword('password', this)"></i>
+            </div>
+
+            <!-- REMEMBER + FORGOT -->
+            <div class="extra">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <!-- BUTTON -->
+            <button type="submit">Login →</button>
+
+            <!-- SIGNUP LINK -->
+            <p class="signup-text">
+                Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a>
+            </p>
+
+        </form>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>

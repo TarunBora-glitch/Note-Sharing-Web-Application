@@ -1,0 +1,123 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #f4f4f4;
+}
+
+/* MAIN CONTAINER */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT SIDE */
+.left {
+  width: 50%;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.left h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.left p {
+  color: #ccc;
+}
+
+/* RIGHT SIDE */
+.right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FORM */
+form {
+  width: 320px;
+}
+
+form h2 {
+  margin-bottom: 5px;
+}
+
+.sub {
+  color: gray;
+  margin-bottom: 20px;
+}
+
+/* INPUT BOX */
+.input-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.input-box i {
+  margin-right: 10px;
+  color: gray;
+}
+
+.input-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+/* EXTRA OPTIONS */
+.extra {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.extra a {
+  text-decoration: none;
+  color: black;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* SIGNUP TEXT */
+.signup-text {
+  margin-top: 15px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.signup-text a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}

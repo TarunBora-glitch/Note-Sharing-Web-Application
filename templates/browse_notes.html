@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='browse_notes.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-book-open"></i>
+            <span>NoteHub</span>
+        </div>
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Search notes..." class="search-input">
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('home_page') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('browse_notes') }}" class="nav-link active">Browse Notes</a>
+            <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+          </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Browse Notes</h1>
+            <p class="subtitle">Select your details to find notes</p>
+        </div>
+
+        <!-- STEP 1: YEARS -->
+        <div class="filters step active" id="years-step">
+            <div class="filter-group">
+                <label class="filter-label">Select Year</label>
+                <div class="year-buttons">
+                    <button class="year-btn" data-step="semesters" data-year="1">Year 1</button>
+                    <button class="year-btn" data-step="semesters" data-year="2">Year 2</button>
+                    <button class="year-btn" data-step="semesters" data-year="3">Year 3</button>
+                    <button class="year-btn" data-step="semesters" data-year="4">Year 4</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: SEMESTERS -->
+        <div class="filters step" id="semesters-step">
+            <div class="step-header">
+                <button class="back-btn" onclick="goBack('years')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2 id="year-title">Year 1</h2>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Select Semester</label>
+                <div class="semester-buttons" id="semester-buttons">
+                    <!-- Semesters dynamically generated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3: SUBJECTS -->
+        <div class="filters step" id="subjects-step">
+            <div class="step-header">
+                <button class="back-btn" onclick="goBack('semesters')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2 id="sem-title">Year 1 - 1st Sem</h2>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Select Subject</label>
+                <div class="subject-grid">
+                    <div class="subject-card" data-step="notes" data-subject="cs101">
+                        <h3>CS101</h3>
+                        <p>Introduction to Programming</p>
+                    </div>
+                    <div class="subject-card" data-step="notes" data-subject="math101">
+                        <h3>Math101</h3>
+                        <p>Calculus I</p>
+                    </div>
+                    <div class="subject-card" data-step="notes" data-subject="phys101">
+                        <h3>Phys101</h3>
+                        <p>Physics I</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 4: NOTES -->
+        <div class="filters step" id="notes-step">
+            <div class="step-header">
+                <button class="back-btn" onclick="goBack('subjects')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <h2 id="subject-title">CS101 - Introduction to Programming</h2>
+            </div>
+            <div class="empty-notes">
+                <div class="empty-icon">
+                    <i class="fas fa-file-upload"></i>
+                </div>
+                <h3>No notes yet</h3>
+                <p>Be the first to upload notes for this subject</p>
+                <button class="upload-btn">
+                    <i class="fas fa-plus"></i>
+                    Upload Notes
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='browse_notes.js') }}"></script>
+
+</body>
+</html>

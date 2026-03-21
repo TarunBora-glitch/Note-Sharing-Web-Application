@@ -1,0 +1,120 @@
+/* RESET + GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f3f3f3;
+}
+
+/* CONTAINER */
+.container {
+  width: 400px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+/* HEADER */
+.header h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.header p {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+/* PROFILE IMAGE */
+.profile-pic {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.profile-pic img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  padding: 3px;
+}
+
+.profile-pic input {
+  display: none;
+}
+
+.profile-pic p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: gray;
+  cursor: pointer;
+}
+
+/* FORM LABELS */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* INPUTS, SELECT, TEXTAREA */
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: 0.2s;
+}
+
+/* TEXTAREA FIX */
+form textarea {
+  resize: none;
+  height: 90px;
+}
+
+/* SELECT CLEAN LOOK */
+form select {
+  appearance: none;
+  background: #fff;
+}
+
+/* INPUT FOCUS EFFECT */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #333;
+}
