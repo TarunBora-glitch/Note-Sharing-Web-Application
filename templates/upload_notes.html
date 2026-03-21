@@ -4,31 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Notes - NoteHub</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='upload_notes.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-<!-- NAVBAR -->
-  <div class="navbar">
-      <div class="logo">
-          <i class="fa-solid fa-book-open"></i>
-          <span>NoteHub</span>
-      </div>
+    <!-- TOP BAR (BACK BUTTON) -->
+    <div class="topbar">
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h2>Upload Notes</h2>
+    </div>
 
-      <div class="search-container">
-          <i class="fas fa-search search-icon"></i>
-          <input type="text" placeholder="Search notes..." class="search-input">
-      </div>
-
-      <div class="nav-links">
-          <a href="{{ url_for('home_page') }}" class="nav-link active">Home</a>
-          <a href="{{ url_for('browse_notes') }}" class="nav-link">Browse Notes</a>
-          <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
-      </div>
-      
-  </div>
   <div class="container">
 
     <div class="header">
