@@ -1,0 +1,93 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.forgot-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* FLASH */
+.flash {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.flash.error {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.flash.success {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.back {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+
+  text-decoration: none;   
+  font-weight: 500;        
+  color: #3b3b3b;             
+}
+
+/* OPTIONAL HOVER EFFECT */
+.back:hover {
+  color: black;
+}
+
+.password-rules {
+  text-align: left;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.password-rules ul {
+  padding-left: 18px;
+}
+
+.password-rules li {
+  margin-bottom: 4px;
+}
+
+/* VALID */
+.valid {
+  color: green;
+}
+
+/* INVALID */
+.invalid {
+  color: red;
+}

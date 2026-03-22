@@ -23,26 +23,33 @@
     <!-- RIGHT SIDE FORM -->
     <div class="right">
 
-        <form class="signup-form" action="{{ url_for('profile_setup') }}" method="GET">
+        <form class="signup-form" action="{{ url_for('signup') }}" method="POST">
             <h2>Create Account</h2>
             <p class="sub">Join NoteHub and start sharing notes</p>
-
+            <!-- FLASH MESSAGE -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="flash {{ category }}" id="flash-message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
             <!-- FULL NAME -->
             <div class="input-box">
                 <i class="fa fa-user"></i>
-                <input type="text" placeholder="Full Name" required>
+                <input type="text" name="fullname" placeholder="Full Name" required>
             </div>
 
             <!-- EMAIL -->
             <div class="input-box">
                 <i class="fa fa-envelope"></i>
-                <input type="email" placeholder="Email Address" required>
+                <input type="email" name="email" placeholder="Email Address" required>
             </div>
 
             <!-- PASSWORD -->
             <div class="input-box">
                 <i class="fa fa-lock"></i>
-                <input type="password" id="password" placeholder="Password" required>
+                <input type="password" name="password" id="password" placeholder="Password" required>
                 <i class="fa fa-eye-slash toggle" onclick="togglePassword('password', this)"></i>
             </div>
 
@@ -60,9 +67,9 @@
             <div class="rules">
                 <p>Password must contain:</p>
                 <ul>
-                    <li id="length">🔴 At least 6 characters</li>
-                    <li id="case">🔴 Uppercase and lowercase letters</li>
-                    <li id="number">🔴 Numbers</li>
+                    <li id="length">At least 6 characters</li>
+                    <li id="case">Uppercase and lowercase letters</li>
+                    <li id="number">Numbers</li>
                 </ul>
             </div>
 

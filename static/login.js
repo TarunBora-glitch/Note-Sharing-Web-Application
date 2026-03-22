@@ -11,3 +11,16 @@ function togglePassword(id, icon) {
       icon.classList.add("fa-eye-slash");
   }
 }
+const flash = document.getElementById("flash-message");
+
+if (flash) {
+    setTimeout(() => {
+        flash.style.opacity = "0";
+        flash.style.transition = "0.5s";
+
+        setTimeout(() => {
+            flash.remove();
+        }, 500);
+
+    }, 3000); // hides after 3 seconds
+}

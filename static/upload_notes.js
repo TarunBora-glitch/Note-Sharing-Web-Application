@@ -3,40 +3,97 @@ let selectedYear = "";
 let selectedSemester = "";
 let selectedSubject = "";
 
+// ================= DATA (ALL SUBJECTS) =================
+const subjectsData = {
+    "Year 1": {
+        "Semester 1": [
+            { code: "BS201", name: "Chemistry" },
+            { code: "BS102", name: "Mathematics-I" },
+            { code: "BS203", name: "Biology for Engineers" },
+            { code: "ES201", name: "Programming for Problem Solving" },
+            { code: "ES202", name: "Engineering Mechanics" }
+        ],
+        "Semester 2": [
+            { code: "BS101", name: "Physics" },
+            { code: "BS202", name: "Mathematics-II" },
+            { code: "ES101", name: "Basic Electrical Engineering" },
+            { code: "ES102", name: "Engineering Graphics" },
+            { code: "ES104", name: "Design Thinking" }
+        ]
+    },
+
+    "Year 2": {
+        "Semester 3": [
+            { code: "CS241301", name: "Data Structures & Algorithms" },
+            { code: "CS241302", name: "Object Oriented Programming" },
+            { code: "CS241303", name: "Software Engineering" },
+            { code: "CS241304", name: "Digital Systems" },
+            { code: "MA241305D", name: "Mathematics III" },
+            { code: "HS241306", name: "Indian Knowledge Systems" }
+        ],
+        "Semester 4": [
+            { code: "CS241401", name: "Database Management System" },
+            { code: "CS241402", name: "Full Stack Development" },
+            { code: "CS241403", name: "Machine Learning" },
+            { code: "CS241404", name: "Computer Organization" },
+            { code: "CS241405", name: "Design & Analysis of Algorithms" },
+            { code: "HS241406", name: "Finance & Accounting" }
+        ]
+    },
+
+    "Year 3": {
+        "Semester 5": [
+            { code: "CSE181501", name: "Database Management System" },
+            { code: "CSE181502", name: "Design & Analysis of Algorithm" },
+            { code: "CSE181503", name: "Formal Language & Automata" },
+            { code: "CSE1815PE14", name: "Computer Graphics" },
+            { code: "HS181506", name: "Engineering Economics" }
+        ],
+        "Semester 6": [
+            { code: "CSE181601", name: "Compiler Design" },
+            { code: "CSE181602", name: "Computer Networks" },
+            { code: "CSE1816PE21", name: "Data Mining" },
+            { code: "CSE1816PE31", name: "Image Processing" },
+            { code: "CSE1816OE11", name: "Software Engineering" },
+            { code: "HS181606", name: "Accountancy" }
+        ]
+    },
+
+    "Year 4": {
+        "Semester 7": [
+            { code: "HS181704", name: "Principles of Management" },
+            { code: "CSE1817PE41", name: "Cloud Computing" },
+            { code: "CSE1817OE21", name: "Machine Learning" },
+            { code: "CSE1817OE33", name: "Embedded Systems" }
+        ],
+        "Semester 8": [
+            { code: "CSE1818PE51", name: "Cryptography & Network Security" },
+            { code: "CSE1818PE63", name: "Neural Networks & Deep Learning" },
+            { code: "CSE1818OE41", name: "Artificial Intelligence" },
+            { code: "CSE1818OE54", name: "Soft Computing" }
+        ]
+    }
+};
+
 // ================= ELEMENTS =================
 const yearBtns = document.querySelectorAll(".year-btn");
-const subjectCards = document.querySelectorAll(".subject-card");
 
 // ================= STEP 1 → YEAR =================
 yearBtns.forEach(btn => {
     btn.addEventListener("click", () => {
 
-        // REMOVE ACTIVE FROM ALL
         yearBtns.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
 
         selectedYear = btn.textContent;
         document.getElementById("yearInput").value = selectedYear;
-
         document.getElementById("selected-year-title").textContent = selectedYear;
 
-        // 🎯 DYNAMIC SEMESTERS
         const semesterContainer = document.querySelector(".semester-buttons");
         semesterContainer.innerHTML = "";
 
-        let semesters = [];
+        const semesters = Object.keys(subjectsData[selectedYear]);
 
-        if (selectedYear === "Year 1") {
-            semesters = ["Semester 1", "Semester 2"];
-        } else if (selectedYear === "Year 2") {
-            semesters = ["Semester 3", "Semester 4"];
-        } else if (selectedYear === "Year 3") {
-            semesters = ["Semester 5", "Semester 6"];
-        } else if (selectedYear === "Year 4") {
-            semesters = ["Semester 7", "Semester 8"];
-        }
-
-        // CREATE SEMESTER BUTTONS
         semesters.forEach(sem => {
             const button = document.createElement("button");
             button.type = "button";
@@ -45,14 +102,14 @@ yearBtns.forEach(btn => {
 
             button.addEventListener("click", () => {
 
-                // REMOVE ACTIVE FROM ALL
                 document.querySelectorAll(".semester-btn").forEach(b => b.classList.remove("active"));
                 button.classList.add("active");
 
                 selectedSemester = sem;
                 document.getElementById("semesterInput").value = selectedSemester;
-
                 document.getElementById("selected-semester-title").textContent = selectedSemester;
+
+                loadSubjects(selectedYear, selectedSemester);
 
                 changeStep("upload-semester-step", "upload-subject-step");
             });
@@ -64,22 +121,37 @@ yearBtns.forEach(btn => {
     });
 });
 
-// ================= STEP 3 → SUBJECT =================
-subjectCards.forEach(card => {
-    card.addEventListener("click", () => {
+// ================= LOAD SUBJECTS =================
+function loadSubjects(year, semester) {
+    const subjectGrid = document.querySelector(".subject-grid");
+    subjectGrid.innerHTML = "";
 
-        // REMOVE ACTIVE FROM ALL
-        subjectCards.forEach(c => c.classList.remove("active"));
-        card.classList.add("active");
+    const subjects = subjectsData[year][semester];
 
-        selectedSubject = card.querySelector("h3").textContent;
-        document.getElementById("subjectInput").value = selectedSubject;
+    subjects.forEach(sub => {
+        const card = document.createElement("div");
+        card.classList.add("subject-card");
 
-        document.getElementById("selected-subject-title").textContent = selectedSubject;
+        card.innerHTML = `
+            <h3>${sub.code}</h3>
+            <p>${sub.name}</p>
+        `;
 
-        changeStep("upload-subject-step", "upload-files-step");
+        card.addEventListener("click", () => {
+            document.querySelectorAll(".subject-card").forEach(c => c.classList.remove("active"));
+            card.classList.add("active");
+
+            selectedSubject = sub.code + " - " + sub.name;
+            document.getElementById("subjectInput").value = selectedSubject;
+
+            document.getElementById("selected-subject-title").textContent = sub.name;
+
+            changeStep("upload-subject-step", "upload-files-step");
+        });
+
+        subjectGrid.appendChild(card);
     });
-});
+}
 
 // ================= STEP CHANGE =================
 function changeStep(current, next) {

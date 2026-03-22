@@ -61,3 +61,9 @@ function loadCurrentValues() {
 }
 
 document.querySelector('.edit-profile-btn').addEventListener('click', loadCurrentValues);
+
+function logoutUser() {
+  // later you can clear session here (when DB added)
+
+  window.location.href = "/"; // redirect to index.html
+}

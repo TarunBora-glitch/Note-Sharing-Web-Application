@@ -37,16 +37,16 @@ function validatePassword() {
   let isNumber = /[0-9]/.test(val);
 
   // LENGTH
-  length.innerHTML = (isLength ? "🟢" : "🔴") + " At least 6 characters";
-  length.classList.toggle("valid", isLength);
+  length.innerHTML = "At least 6 characters";
+  length.style.color = isLength ? "green" : "red";
 
   // CASE
-  caseCheck.innerHTML = (isCase ? "🟢" : "🔴") + " Uppercase and lowercase letters";
-  caseCheck.classList.toggle("valid", isCase);
+  caseCheck.innerHTML = "Uppercase and lowercase letters";
+  caseCheck.style.color = isCase ? "green" : "red";
 
   // NUMBER
-  number.innerHTML = (isNumber ? "🟢" : "🔴") + " Numbers";
-  number.classList.toggle("valid", isNumber);
+  number.innerHTML = "Numbers";
+  number.style.color = isNumber ? "green" : "red";
 
   return isLength && isCase && isNumber;
 }
@@ -60,9 +60,8 @@ function checkMatch() {
 
   if (confirmPassword.value !== password.value) {
       matchMsg.style.display = "block";
-      matchMsg.innerHTML = "🔴 Passwords do not match";
-      matchMsg.classList.add("not-match");
-      matchMsg.classList.remove("match");
+      matchMsg.innerHTML = "Passwords do not match";
+      matchMsg.style.color = "red";
       return false;
   } else {
       matchMsg.style.display = "none";
@@ -75,19 +74,28 @@ function validateEmail() {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
 }
 
-// LIVE CHECK (no disabling now)
+// LIVE CHECK
 function liveValidation() {
   validatePassword();
   checkMatch();
 }
 
-// EVENT LISTENERS (live UI feedback only)
+// EVENTS
 fullname.addEventListener("input", liveValidation);
 email.addEventListener("input", liveValidation);
 password.addEventListener("input", liveValidation);
 confirmPassword.addEventListener("input", liveValidation);
 
-// ✅ FINAL SUBMIT VALIDATION
+const flash = document.getElementById("flash-message");
+if (flash) {
+    setTimeout(() => {
+        flash.style.opacity = "0";
+        flash.style.transition = "0.5s";
+        setTimeout(() => flash.remove(), 500);
+    }, 3000);
+}
+
+// FINAL SUBMIT
 form.addEventListener("submit", function(e) {
 
   let nameValid = fullname.value.trim() !== "";
@@ -96,7 +104,7 @@ form.addEventListener("submit", function(e) {
   let matchValid = checkMatch();
 
   if (!(nameValid && emailValid && passValid && matchValid)) {
-      e.preventDefault(); // ❌ stop submit
+      e.preventDefault();
       alert("Please fill all fields correctly before submitting.");
   }
 });

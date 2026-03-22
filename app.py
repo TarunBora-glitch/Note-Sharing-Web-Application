@@ -25,8 +25,27 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/signup')
+# Temporary mock database
+registered_emails = ["test@gmail.com"]
+
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if request.method == 'POST':
+        fullname = request.form.get('fullname')
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Check if email already exists
+        if email in registered_emails:
+            flash("Email already registered. Please login.", "error")
+            return redirect(url_for('signup'))
+
+        # Save the email to our mock database
+        registered_emails.append(email)
+
+        # Redirect to profile setup
+        return redirect(url_for('profile_setup'))
+
     return render_template('signup.html')
 
 
@@ -45,9 +64,19 @@ def home_page():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        return redirect(url_for('home_page'))
-    return render_template('login.html')
+        email = request.form['email']
+        password = request.form['password']
 
+        # TEMP LOGIN CHECK (NO DB)
+        valid_email = "test@gmail.com"
+        valid_password = "Test123"
+
+        if email != valid_email or password != valid_password:
+            flash("Invalid Credentials", "error")
+        else:
+            return redirect(url_for('home_page'))
+
+    return render_template('login.html')
 
 @app.route('/browse_notes')
 def browse_notes():
@@ -102,5 +131,45 @@ def upload_notes():
 
 # ---------------- RUN ---------------- #
 
+@app.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+
+        # TEMP CHECK
+        if email != "test@gmail.com":
+            flash("Sorry, Email ID does not exist", "error")
+        else:
+            flash("Reset link sent to your email", "success")
+            return redirect(url_for('reset_password'))
+
+    return render_template('forgot_password.html')
+
+import re
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_password():
+    if request.method == 'POST':
+        password = request.form['password']
+        confirm = request.form['confirm_password']
+
+        # MATCH CHECK
+        if password != confirm:
+            flash("Passwords do not match", "error")
+
+        # VALIDATION RULES
+        elif len(password) < 6 or \
+             not re.search(r"[A-Z]", password) or \
+             not re.search(r"[a-z]", password) or \
+             not re.search(r"[0-9]", password):
+
+            flash("Password does not meet requirements", "error")
+
+        else:
+            flash("Password reset successful! Redirecting to login...", "success")
+            return redirect(url_for('login'))
+
+    return render_template('reset_password.html')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5000)

@@ -153,18 +153,15 @@ label {
   background: black;
   color: white;
 }
-
-/* SUBJECT GRID */
 .subject-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
 }
 
 .subject-card {
-  padding: 15px;
-  background: white;
-  border: 1px solid #eee;
+  padding: 10px;
+  border: 1px solid #ddd;
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
@@ -172,11 +169,12 @@ label {
 }
 
 .subject-card:hover {
-  transform: translateY(-3px);
+  background: #f1f5f9;
 }
 
 .subject-card.active {
-  border-color: black;
+  background: black;
+  color: white;
 }
 
 /* ================= FILE UPLOAD ================= */

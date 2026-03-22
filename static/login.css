@@ -88,7 +88,7 @@ form h2 {
 /* EXTRA OPTIONS */
 .extra {
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   font-size: 13px;
   margin-bottom: 15px;
 }
@@ -120,4 +120,34 @@ button {
   color: black;
   text-decoration: none;
   font-weight: bold;
+}
+
+.flash {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin: 10px 0 15px 0;
+  border-radius: 6px;
+  font-size: 14px;
+  animation: fadeIn 0.3s ease;
+
+}
+
+/* ERROR STYLE */
+.flash.error {
+  background: #fdecea;
+  color: #d93025;
+  border: 1px solid #f5c2c0;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

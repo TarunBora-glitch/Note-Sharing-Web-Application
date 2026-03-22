@@ -198,7 +198,41 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+.logout-btn {
+  margin-top: 15px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
 
+  /* CLEAN RED BUTTON */
+  background-color: #d93025;
+  color: white;
+  border: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  transition: all 0.25s ease;
+}
+
+/* ICON */
+.logout-btn i {
+  font-size: 13px;
+}
+
+/* HOVER */
+.logout-btn:hover {
+  background-color: #b3261e;
+  transform: translateY(-1px);
+}
+
+/* CLICK */
+.logout-btn:active {
+  transform: scale(0.96);
+}
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
